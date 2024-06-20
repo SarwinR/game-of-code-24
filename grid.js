@@ -21,7 +21,7 @@ function gameOver() {
 }
 
 function canMove(x, y) {
-  return grid[y][x] === 1;
+  return grid[y][x] === 1 || grid[y][x] === 2 ? true : false;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
