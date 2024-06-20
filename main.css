@@ -173,6 +173,9 @@ img {
   background: transparent;
   color: #00ff00;
   font-family: "Courier New", Courier, monospace;
+  overflow-x: none;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .hidden {
