@@ -1,4 +1,3 @@
-// grid.js
 let TILE_SIZE; // Size of each grid tile will be dynamically calculated
 
 const grid = [
@@ -13,7 +12,7 @@ const grid = [
 let player_position = { x: 1, y: 1 };
 
 function canMove(x, y) {
-  return grid[y][x] == 1;
+  return grid[y][x] === 1;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,10 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     TILE_SIZE = Math.min(leftPanelWidth / numCols, leftPanelHeight / numRows);
 
-    gridOverlay.style.width = `${leftPanelWidth}px`;
-    gridOverlay.style.height = `${leftPanelHeight}px`;
-    gridOverlay.style.gridTemplateColumns = `repeat(${numCols}, 1fr)`;
-    gridOverlay.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
+    gridOverlay.style.width = `${numCols * TILE_SIZE}px`;
+    gridOverlay.style.height = `${numRows * TILE_SIZE}px`;
+    gridOverlay.style.gridTemplateColumns = `repeat(${numCols}, ${TILE_SIZE}px)`;
+    gridOverlay.style.gridTemplateRows = `repeat(${numRows}, ${TILE_SIZE}px)`;
 
     // Clear any existing grid tiles
     while (gridOverlay.firstChild) {
@@ -46,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (grid[y][x] === 1) {
           tile.classList.add("blocked");
         }
+        tile.style.width = `${TILE_SIZE}px`;
+        tile.style.height = `${TILE_SIZE}px`;
         gridOverlay.appendChild(tile);
       }
     }
@@ -59,11 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", createGrid);
 });
 
-const player = document.getElementById("character");
-
 function setupPlayer() {
   const player = document.getElementById("character");
-  // set plater size
+  // set player size
   player.style.width = `${TILE_SIZE}px`;
   player.style.height = `${TILE_SIZE}px`;
 
@@ -71,10 +70,9 @@ function setupPlayer() {
   player.style.left = `${player_position.x * TILE_SIZE}px`;
   player.style.top = `${player_position.y * TILE_SIZE}px`;
 }
+
 function movePlayer(direction) {
   const player = document.getElementById("character");
-  const left = parseInt(player.style.left, 10);
-  const top = parseInt(player.style.top, 10);
 
   // get future position
   let x = player_position.x;
@@ -97,11 +95,12 @@ function movePlayer(direction) {
 
   if (canMove(x, y)) {
     player_position = { x, y };
-    player.style.left = `${x * TILE_SIZE}px`;
-    player.style.top = `${y * TILE_SIZE}px`;
+    player.style.left = `${x * TILE_SIZE + 4}px`;
+    player.style.top = `${y * TILE_SIZE + 4}px`;
   } else {
     console.log("You can't move there!");
   }
 }
 
+window.movePlayer = movePlayer; // Make movePlayer function accessible globally
 window.canMove = canMove; // Make canMove function accessible globally
