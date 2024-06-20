@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <script src="system.js"></script>
-
-    <script src="chat.js" defer></script>
-    <title>Three.js Cube with Chat</title>
-    <!-- add style sheet -->
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <div id="left-panel">
-      <script src="usermovement.js"></script>
-
-      <div id="character"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Three.js Cube with Chat</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <div id="left-panel">
+    <div id="character"></div>
+  </div>
+  <div id="chat-panel" tabindex="0">
+    <div id="chat-messages"></div>
+    <div class="prompt">
+      <div id="current-input" class="input" contenteditable="true"></div>
     </div>
-    <div id="chat-panel" tabindex="0">
-      <div id="chat-messages"></div>
-      <div class="prompt">
-        <div id="current-input" class="input" contenteditable="true"></div>
-      </div>
-    </div>
-  </body>
+  </div>
+  <script src="system.js"></script>
+  <script src="chat.js" defer></script>
+  <script src="usermovement.js" defer></script>
+</body>
 </html>
