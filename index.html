@@ -5,21 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three.js Cube</title>
-  <style>
-    body { margin: 0; }
-    canvas { display: block; }
-  </style>
+  <link rel="stylesheet" href="main.css">
+
 </head>
 <body>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js"
+  <form id="myForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="canvas-container">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js"
+        }
       }
-    }
+    </script>
+    <script type="module" src="main.js"></script>
+  </div>
+
+  <script>
+   
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      // Prevent the form from submitting normally
+      event.preventDefault();
+
+      // Hide the form
+      document.getElementById('myForm').style.display = 'none';
+
+      // Show the canvas container
+      document.getElementById('canvas-container').style.display = 'none';
+    });
   </script>
-  <script type="module" src="main.js"></script>
 
 </body>
 </html>
