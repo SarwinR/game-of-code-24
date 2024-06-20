@@ -3,7 +3,7 @@
     {
       "base_path": "./levels/javascript_lesson/",
 
-      "background": "assets/images/lava.gif",
+      "background": "assets/images/background3.webp",
       "player_character": "assets/images/human_robot/front.png",
       "player_character_left": "assets/images/human_robot/left.png",
       "player_character_right": "assets/images/human_robot/right.png",
@@ -16,7 +16,7 @@
     {
       "base_path": "./levels/javascript_lesson/",
 
-      "background": "assets/images/background.jpg",
+      "background": "assets/images/lava.gif",
       "player_character": "assets/images/human_robot/front.png",
       "player_character_left": "assets/images/human_robot/left.png",
       "player_character_right": "assets/images/human_robot/right.png",
