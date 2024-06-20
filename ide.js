@@ -18,7 +18,6 @@ function updateLineNumbers() {
 }
 
 function parseCode() {
-  // remove empty lines
   code = code.replace(/^\s*[\r\n]/gm, "");
   lines = code.split("\n");
 
