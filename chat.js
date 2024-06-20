@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatPanel = document.getElementById("chat-panel");
   const chatMessages = document.getElementById("chat-messages");
   const currentInput = document.getElementById("current-input");
+  const errorPanel = document.getElementById("error-panel");
+  const enableChatButton = document.getElementById("enable-chat");
+  const disableChatButton = document.getElementById("disable-chat");
+  let chatEnabled = true;
 
   function displayMessage(role, text) {
     currentInput.textContent = "";
@@ -28,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4-turbo",
         messages: [
           {
             role: "system",
@@ -53,7 +57,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  function disableChat() {
+    chatEnabled = false;
+    chatPanel.classList.add("hidden");
+    errorPanel.classList.remove("hidden");
+  }
+
+  function enableChat() {
+    chatEnabled = true;
+    chatPanel.classList.remove("hidden");
+    errorPanel.classList.add("hidden");
+  }
+
+  enableChatButton.addEventListener("click", enableChat);
+  disableChatButton.addEventListener("click", disableChat);
+
   chatPanel.addEventListener("keypress", function (e) {
+    if (!chatEnabled) return;
+
     if (e.key === "Enter") {
       e.preventDefault();
 
@@ -77,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   chatPanel.addEventListener("click", function () {
-    currentInput.focus();
+    if (chatEnabled) {
+      currentInput.focus();
+    }
   });
 
   currentInput.focus();
