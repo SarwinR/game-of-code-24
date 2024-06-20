@@ -16,8 +16,7 @@ body {
 
 #character {
   z-index: 1;
-  background: url("./assets/images/player_character.jpeg") no-repeat center
-    center;
+  background: url("./assets/images/player_character.jpeg") no-repeat center center;
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -54,6 +53,7 @@ body {
   border-radius: 10px;
   font-size: 2rem;
   white-space: normal;
+
   max-width: 300px; 
   overflow-wrap: break-word; 
   font-size: medium;
@@ -147,7 +147,6 @@ body {
   overflow-y: hidden;
   tab-size: 2;
 }
-
 
 #chat-panel {
   height: 50vh; /* Adjust the height as needed */
@@ -327,4 +326,29 @@ body {
 
 .grid-tile.blocked {
   background-color: rgb(233, 255, 39); /* Indicate blocked tiles */
+}
+
+/* Memory Modal */
+#memory-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 50px;
+  border-radius: 8px;
+  display: none;
+  z-index: 10;
+}
+
+#memory-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#memory-list {
+  list-style: none;
+  padding: 0;
 }
