@@ -45,8 +45,8 @@ body {
 
 #speech_bubble {
   z-index: 2;
-  position: absolute;
-  top: -70px;
+  position: relative;
+  top: -180px;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
@@ -54,7 +54,7 @@ body {
   padding: 10px;
   border-radius: 10px;
   white-space: normal;
-  width: 400px;
+  max-width: 400px;
   overflow-wrap: break-word;
   font-size: medium;
 }
