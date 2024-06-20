@@ -26,7 +26,13 @@ function gameWin() {
   displayMessage("system", "Congratulations! You have completed the level!");
   if (currentLevel <= 1) {
     loadLevel("./levels/javascript_lesson/config.json", currentLevel);
+    disableChat();
     setupPlayer();
+    displayMessage("system", "oh no! You Completed it. WHATEVER you do, never press F12. It will ruin everything. Do not run the command enableChat()");
+  }
+  else
+  {
+    displayMessage("system", "You have completed all levels!");
   }
 }
 

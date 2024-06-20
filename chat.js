@@ -101,6 +101,18 @@ function sendMessageToAI(message) {
     });
 }
 
+function disableChat() {
+  chatEnabled = false;
+  chatPanel.classList.add("hidden");
+  errorPanel.classList.remove("hidden");
+}
+
+function enableChat() {
+  chatEnabled = true;
+  chatPanel.classList.remove("hidden");
+  errorPanel.classList.add("hidden");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const chatPanel = document.getElementById("chat-panel");
   const chatMessages = document.getElementById("chat-messages");
@@ -180,17 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  function disableChat() {
-    chatEnabled = false;
-    chatPanel.classList.add("hidden");
-    errorPanel.classList.remove("hidden");
-  }
-
-  function enableChat() {
-    chatEnabled = true;
-    chatPanel.classList.remove("hidden");
-    errorPanel.classList.add("hidden");
-  }
 
   chatPanel.addEventListener("keypress", function (e) {
     if (!chatEnabled) return;
