@@ -41,6 +41,11 @@ updateLineNumbers();
 async function parseCode() {
   code = ide.value;
 
+  await __sendMessageToAI(
+    'given the code, parse it and give it to me in this form: ["command1", "command2", ...]. The valid commands are: [move("left"),move("right"),move("up"),move("down")]',
+    ""
+  );
+
   lines = code.split("\n");
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();

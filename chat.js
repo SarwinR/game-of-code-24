@@ -25,8 +25,34 @@ function displayMessage(role, text) {
   chatMessages.appendChild(messageElem);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
+async function __sendMessageToAI(message, system) {
+  let _res = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4-turbo",
+      messages: [
+        {
+          role: "system",
+          content: system,
+        },
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+    }),
+  });
+
+  let text_res = await _res.json();
+  let reply = text_res.choices[0].message.content;
+  return reply;
+}
+
 function sendMessageToAI(message) {
-  console.log("message", message);
   if (!message) return;
 
   messages = [
