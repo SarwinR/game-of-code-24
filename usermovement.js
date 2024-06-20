@@ -1,6 +1,10 @@
 var character = document.getElementById("character");
 var speed = 10; // Increase speed for noticeable movement
 
+//chencg character size
+character.style.width = ;
+
+
 function move_character(direction) {
   var left = parseInt(character.style.left, 10);
   var top = parseInt(character.style.top, 10);

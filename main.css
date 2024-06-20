@@ -16,7 +16,8 @@ body {
 
 #character {
   z-index: 1;
-  background: url('./assets/images/player_character.jpeg') no-repeat center center;
+  background: url("./assets/images/player_character.jpeg") no-repeat center
+    center;
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -191,7 +192,6 @@ img {
   color: red;
 }
 
-
 /* ide and chat panel */
 #error-panel {
   display: flex;
@@ -206,7 +206,6 @@ img {
   top: 0;
   right: 0;
 }
-
 
 .message {
   margin: 5px 0;
@@ -243,7 +242,6 @@ img {
   caret-color: #00ff00;
 }
 
-
 button {
   margin: 5px;
   padding: 10px;
@@ -254,7 +252,6 @@ button {
 #error-panel.hidden {
   display: none;
 }
-
 
 /* Grid Overlay */
 #grid-overlay {
@@ -276,5 +273,5 @@ button {
 }
 
 .grid-tile.blocked {
-  background-color: rgba(255, 0, 0, 0.3); /* Indicate blocked tiles */
+  background-color: rgb(233, 255, 39); /* Indicate blocked tiles */
 }

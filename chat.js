@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   expectingStoryMessage = true;
   storyCallback = (message) => {
     displayMessage("system", `Hello ${message}!`);
-    document.cookie = 'name=' + message;
+    document.cookie = "name=" + message;
   };
 
   function displayMessage(role, text) {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
           {
             role: "system",
             content:
-              'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down), memory open, memory close]].',
+              'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down), memory open, memory close, run].',
           },
           {
             role: "user",
@@ -104,8 +104,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (message) {
         safe_msg = message.toLowerCase();
 
-        if (safe_msg == "memory open") {
+        if (safe_msg == "run") {
           displayMessage("user", `> ${message}`);
+          parseCode();
+        } else if (safe_msg == "memory open") {
+          displayMessage("user", `> ${message}`);
+          let memoryListElement = document.getElementById("memory-list");
+          memoryList = getMemory();
+          memoryListElement.innerHTML = "";
+          for (const key in memoryList) {
+            const memoryItem = document.createElement("li");
+            memoryItem.textContent = `${key}: ${memoryList[key]}`;
+            memoryListElement.appendChild(memoryItem);
+          }
           memoryModal.style.display = "block";
         } else if (safe_msg == "memory close") {
           displayMessage("user", `> ${message}`);
@@ -120,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
             direction === "down"
           ) {
             displayMessage("user", `> ${message}`);
-            move_character(direction);
+            movePlayer(direction);
           } else {
             displayMessage("user", `> ${message}`);
             sendMessageToAI(message);
