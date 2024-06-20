@@ -20,7 +20,7 @@
       "player_character_left": "assets/images/human_robot/left.png",
       "player_character_right": "assets/images/human_robot/right.png",
       "player_character_back": "assets/images/human_robot/back.png",
-      "helper_character": "assets/images/helper.png",
+      "helper_character": "assets/images/evil_robot.gif",
       "ground": "assets/images/ground.png"
     }
   ]
