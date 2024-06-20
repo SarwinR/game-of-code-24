@@ -19,8 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function sendMessageToAI(message) {
     if (!message) return;
 
-    displayMessage("user", `> ${message}`);
-
     fetch(endpoint, {
       method: "POST",
       headers: {
@@ -63,13 +61,21 @@ document.addEventListener("DOMContentLoaded", () => {
         safe_msg = message.toLowerCase();
         if (safe_msg.startsWith("move")) {
           const direction = safe_msg.split('"')[1];
-          if (direction in ["left", "right", "up", "down"])
+          console.log(direction);
+          if (
+            direction === "left" ||
+            direction === "right" ||
+            direction === "up" ||
+            direction === "down"
+          ) {
+            displayMessage("user", `> ${message}`);
             move_character(direction);
-          else {
+          } else {
             displayMessage("user", `> ${message}`);
             sendMessageToAI(message);
           }
         } else {
+          displayMessage("user", `> ${message}`);
           sendMessageToAI(message);
         }
       }
