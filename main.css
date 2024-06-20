@@ -63,9 +63,6 @@ body {
   flex: 1;
   position: relative; /* Allows positioning of image */
   background-size: cover;
-  overflow: hidden;
-
-
 }
 
 img {
