@@ -16,15 +16,17 @@ body {
 
 #character {
   z-index: 1;
-  background: url("./assets/images/player_character.jpeg") no-repeat center
-    center;
-  background-size: cover;
+  background-size: 50%;
   width: 50px;
   height: 50px;
   position: absolute;
   left: 0;
   top: 0;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
+
 
 /* Evil Character */
 #evil_container {
@@ -329,9 +331,10 @@ body {
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
   background-color: transparent;
 }
-
+ /* background-color: rgb(233, 255, 39); Indicate blocked tiles */
 .grid-tile.blocked {
-  background-color: rgb(233, 255, 39); /* Indicate blocked tiles */
+    background-image: url('https://cdna.artstation.com/p/assets/images/images/007/837/604/large/na-li-fs-grassdex-00-01.jpg?1508846636'); /* Replace with your blocked tile image path */
+
 }
 
 .grid-tile.end {

@@ -1,4 +1,4 @@
-let TILE_SIZE; // Size of each grid tile will be dynamically calculated
+let TILE_SIZE;
 
 let startingPosition = { x: 1, y: 1 };
 let endingPosition = { x: 5, y: 4 };
@@ -20,6 +20,13 @@ function gameOver() {
   setupPlayer();
 }
 
+const playerImages = {
+  front: "levels\\javascript_lesson\\assets\\images\\human_robot\\front.png",
+  left: "levels\\javascript_lesson\\assets\\images\\human_robot\\left.png",
+  right: "levels\\javascript_lesson\\assets\\images\\human_robot\\right.png",
+  back: "levels\\javascript_lesson\\assets\\images\\human_robot\\back.png"
+};
+
 function canMove(x, y) {
   return grid[y][x] === 1;
 }
@@ -32,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftPanelWidth = leftPanel.clientWidth;
     const leftPanelHeight = leftPanel.clientHeight;
 
-    const numCols = grid[0].length; // Number of columns based on grid data
-    const numRows = grid.length; // Number of rows based on grid data
+    const numCols = grid[0].length; 
+    const numRows = grid.length; 
 
     TILE_SIZE = Math.min(leftPanelWidth / numCols, leftPanelHeight / numRows);
 
@@ -68,21 +75,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createGrid();
 
-  // Recreate the grid when the window is resized
   window.addEventListener("resize", createGrid);
 });
 
 function setupPlayer() {
   const player = document.getElementById("character");
+  const playerSize = TILE_SIZE * 0.6; 
+
   // set player size
-  player.style.width = `${TILE_SIZE}px`;
-  player.style.height = `${TILE_SIZE}px`;
+  player.style.width = `${playerSize}px`;
+  player.style.height = `${playerSize}px`;
 
   current_player_position = startingPosition;
 
   // set player position
-  player.style.left = `${current_player_position.x * TILE_SIZE}px`;
-  player.style.top = `${current_player_position.y * TILE_SIZE}px`;
+  const offsetX = (TILE_SIZE - playerSize) / 2;
+  const offsetY = (TILE_SIZE - playerSize) / 2;
+
+  player.style.left = `${current_player_position.x * TILE_SIZE + offsetX}px`;
+  player.style.top = `${current_player_position.y * TILE_SIZE + offsetY}px`;
 }
 
 function movePlayer(direction) {
@@ -95,22 +106,28 @@ function movePlayer(direction) {
   switch (direction) {
     case "left":
       x -= 1;
+      playerImage = playerImages.left;
       break;
     case "right":
       x += 1;
+      playerImage = playerImages.right;
       break;
     case "up":
       y -= 1;
+      playerImage = playerImages.back;
       break;
     case "down":
       y += 1;
+      playerImage = playerImages.front;
       break;
   }
 
   if (canMove(x, y)) {
     current_player_position = { x, y };
-    player.style.left = `${x * TILE_SIZE + 4}px`;
-    player.style.top = `${y * TILE_SIZE + 4}px`;
+    const offsetX = (TILE_SIZE - player.clientWidth) / 2;
+    const offsetY = (TILE_SIZE - player.clientHeight) / 2;
+    player.style.left = `${x * TILE_SIZE + offsetX}px`;
+    player.style.top = `${y * TILE_SIZE + offsetY}px`;
     return true;
   } else {
     gameOver();
