@@ -56,6 +56,9 @@ body {
   white-space: normal;
   max-width: 300px;
   overflow-wrap: break-word;
+
+  max-width: 300px;
+  overflow-wrap: break-word;
   font-size: medium;
 }
 
@@ -333,4 +336,28 @@ body {
 
 .grid-tile.end {
   background-color: rgb(28, 207, 43); /* Indicate blocked tiles */
+}
+/* Memory Modal */
+#memory-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 50px;
+  border-radius: 8px;
+  display: none;
+  z-index: 10;
+}
+
+#memory-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#memory-list {
+  list-style: none;
+  padding: 0;
 }
