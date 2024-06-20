@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatMessages = document.getElementById("chat-messages");
   const currentInput = document.getElementById("current-input");
   const errorPanel = document.getElementById("error-panel");
-  const enableChatButton = document.getElementById("enable-chat");
-  const disableChatButton = document.getElementById("disable-chat");
   let chatEnabled = true;
 
   displayMessage("system", "What is your name");
@@ -81,9 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     errorPanel.classList.add("hidden");
   }
 
-  // enableChatButton.addEventListener("click", enableChat);
-  // disableChatButton.addEventListener("click", disableChat);
-
   chatPanel.addEventListener("keypress", function (e) {
     if (!chatEnabled) return;
 
@@ -102,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (message) {
-        safe_msg = message.toLowerCase();
+        const safe_msg = message.toLowerCase();
 
         if (safe_msg == "run") {
           displayMessage("user", `> ${message}`);
@@ -110,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (safe_msg == "memory open") {
           displayMessage("user", `> ${message}`);
           let memoryListElement = document.getElementById("memory-list");
-          memoryList = getMemory();
+          let memoryList = getMemory();
           memoryListElement.innerHTML = "";
           for (const key in memoryList) {
             const memoryItem = document.createElement("li");
@@ -152,3 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   currentInput.focus();
 });
+
+function getMemory() {
+  return {
+    "Task 1": "Completed",
+    "Task 2": "Pending",
+    "Task 3": "In Progress",
+  };
+}

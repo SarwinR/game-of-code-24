@@ -1,5 +1,7 @@
 let TILE_SIZE; // Size of each grid tile will be dynamically calculated
 
+let startingPosition = { x: 1, y: 1 };
+let endingPosition = { x: 5, y: 4 };
 const grid = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 1, 1, 1, 1, 1, 0],
@@ -9,7 +11,14 @@ const grid = [
   [0, 0, 0, 0, 0, 0, 0],
 ];
 
-let player_position = { x: 1, y: 1 };
+grid[endingPosition.y][endingPosition.x] = 2;
+
+let current_player_position = { x: 1, y: 1 };
+
+function gameOver() {
+  alert("Haha you fell down");
+  setupPlayer();
+}
 
 function canMove(x, y) {
   return grid[y][x] === 1;
@@ -41,9 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let y = 0; y < numRows; y++) {
       for (let x = 0; x < numCols; x++) {
         const tile = document.createElement("div");
+
         tile.classList.add("grid-tile");
         if (grid[y][x] === 1) {
           tile.classList.add("blocked");
+        } else if (grid[y][x] === 2) {
+          tile.classList.add("end");
         }
         tile.style.width = `${TILE_SIZE}px`;
         tile.style.height = `${TILE_SIZE}px`;
@@ -66,17 +78,19 @@ function setupPlayer() {
   player.style.width = `${TILE_SIZE}px`;
   player.style.height = `${TILE_SIZE}px`;
 
+  current_player_position = startingPosition;
+
   // set player position
-  player.style.left = `${player_position.x * TILE_SIZE}px`;
-  player.style.top = `${player_position.y * TILE_SIZE}px`;
+  player.style.left = `${current_player_position.x * TILE_SIZE}px`;
+  player.style.top = `${current_player_position.y * TILE_SIZE}px`;
 }
 
 function movePlayer(direction) {
   const player = document.getElementById("character");
 
   // get future position
-  let x = player_position.x;
-  let y = player_position.y;
+  let x = current_player_position.x;
+  let y = current_player_position.y;
 
   switch (direction) {
     case "left":
@@ -94,11 +108,13 @@ function movePlayer(direction) {
   }
 
   if (canMove(x, y)) {
-    player_position = { x, y };
+    current_player_position = { x, y };
     player.style.left = `${x * TILE_SIZE + 4}px`;
     player.style.top = `${y * TILE_SIZE + 4}px`;
+    return true;
   } else {
-    console.log("You can't move there!");
+    gameOver();
+    return "gameover";
   }
 }
 
