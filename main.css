@@ -54,8 +54,8 @@ body {
   border-radius: 10px;
   font-size: 2rem;
   white-space: normal;
-  max-width: 300px; 
-  overflow-wrap: break-word; 
+  max-width: 300px;
+  overflow-wrap: break-word;
   font-size: medium;
 }
 
@@ -148,7 +148,6 @@ body {
   tab-size: 2;
 }
 
-
 #chat-panel {
   height: 50vh; /* Adjust the height as needed */
   display: flex;
@@ -222,10 +221,13 @@ body {
 }
 
 @keyframes blink-animation {
-  0%, 50%, 100% {
+  0%,
+  50%,
+  100% {
     opacity: 1;
   }
-  25%, 75% {
+  25%,
+  75% {
     opacity: 0.3;
   }
 }
@@ -327,4 +329,8 @@ body {
 
 .grid-tile.blocked {
   background-color: rgb(233, 255, 39); /* Indicate blocked tiles */
+}
+
+.grid-tile.end {
+  background-color: rgb(28, 207, 43); /* Indicate blocked tiles */
 }

@@ -1,6 +1,7 @@
 let TILE_SIZE; // Size of each grid tile will be dynamically calculated
 
 let startingPosition = { x: 1, y: 1 };
+let endingPosition = { x: 5, y: 4 };
 const grid = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 1, 1, 1, 1, 1, 0],
@@ -9,6 +10,8 @@ const grid = [
   [0, 1, 1, 1, 0, 1, 0],
   [0, 0, 0, 0, 0, 0, 0],
 ];
+
+grid[endingPosition.y][endingPosition.x] = 2;
 
 let current_player_position = { x: 1, y: 1 };
 
@@ -47,9 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let y = 0; y < numRows; y++) {
       for (let x = 0; x < numCols; x++) {
         const tile = document.createElement("div");
+
         tile.classList.add("grid-tile");
         if (grid[y][x] === 1) {
           tile.classList.add("blocked");
+        } else if (grid[y][x] === 2) {
+          tile.classList.add("end");
         }
         tile.style.width = `${TILE_SIZE}px`;
         tile.style.height = `${TILE_SIZE}px`;
