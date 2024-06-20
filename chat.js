@@ -14,9 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function sendMessage() {
-    const message = currentInput.textContent.trim();
-    
+  function sendMessage(message) {
     if (!message) return;
 
     displayMessage("user", `> ${message}`);
@@ -32,7 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         messages: [
           {
             role: "system",
-            content: "You are an evil AI model in a game. Keep your answers short and evil. Do not use harsh language.",
+            content:
+              "You are an evil AI model in a game. Keep your answers short and evil. Do not use harsh language.",
           },
           {
             role: "user",
@@ -41,27 +40,38 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
       }),
     })
-    .then(response => response.json())
-    .then(data => {
-      const reply = data.choices[0].message.content;
-      displayMessage("system", reply);
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      displayMessage("system", "Error: Failed to fetch response");
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        const reply = data.choices[0].message.content;
+        displayMessage("system", reply);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        displayMessage("system", "Error: Failed to fetch response");
+      });
 
     currentInput.textContent = "";
   }
 
-  chatPanel.addEventListener("keypress", function(e) {
+  chatPanel.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      sendMessage();
+
+      const message = currentInput.textContent.trim();
+
+      if (message) {
+        // move("left")
+        if (message.startsWith("move")) {
+          const direction = message.split('"')[1];
+          move_character(direction);
+        } else {
+          sendMessage(message);
+        }
+      }
     }
   });
 
-  chatPanel.addEventListener("click", function() {
+  chatPanel.addEventListener("click", function () {
     currentInput.focus();
   });
 
