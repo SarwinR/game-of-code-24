@@ -54,7 +54,7 @@ body {
   border-radius: 10px;
   font-size: 2rem;
   white-space: normal;
-  width: 300px; 
+  max-width: 300px; 
   overflow-wrap: break-word; 
   font-size: medium;
 }
