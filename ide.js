@@ -30,7 +30,6 @@ function handleTabKey(e) {
 
     // Insert tab character at cursor position
     ide.value = ide.value.substring(0, start) + "\t" + ide.value.substring(end);
-
     // Move cursor to right after the inserted tab character
     ide.selectionStart = ide.selectionEnd = start + 1;
   }
@@ -41,6 +40,7 @@ updateLineNumbers();
 
 async function parseCode() {
   code = ide.value;
+
   lines = code.split("\n");
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -53,11 +53,12 @@ async function parseCode() {
       const [variable, value] = line.split("=");
       assign(variable.trim(), value.trim());
     }
-
     // if move("direction")
     else if (line.startsWith("move")) {
       const direction = line.split('"')[1].trim();
       let result = movePlayer(direction);
+    } else {
+      sendMessageToAI(code + "\n" + "Pinpoint the error in the code.");
     }
 
     // timeout 1 second
