@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const disableChatButton = document.getElementById("disable-chat");
   let chatEnabled = true;
 
+  displayMessage("system", "What is your name");
+  expectingStoryMessage = true;
+  storyCallback = (message) => {
+    displayMessage("system", `Hello ${message}!`);
+    //levyn save name !!!
+  };
+
   function displayMessage(role, text) {
     currentInput.textContent = "";
 
@@ -24,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMessages.appendChild(messageElem);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
-  displayMessage("system", "What is your name");
   function sendMessageToAI(message) {
     if (!message) return;
 
@@ -72,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     errorPanel.classList.add("hidden");
   }
 
-  enableChatButton.addEventListener("click", enableChat);
-  disableChatButton.addEventListener("click", disableChat);
+  // enableChatButton.addEventListener("click", enableChat);
+  // disableChatButton.addEventListener("click", disableChat);
 
   chatPanel.addEventListener("keypress", function (e) {
     if (!chatEnabled) return;
@@ -81,14 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Enter") {
       e.preventDefault();
 
+      const message = currentInput.textContent.trim();
+
       if (expectingStoryMessage) {
+        console.log("story");
+        displayMessage("user", `> ${message}`);
         storyCallback(message);
         expectingStoryMessage = false;
         storyCallback = null;
         return;
       }
-
-      const message = currentInput.textContent.trim();
 
       if (message) {
         safe_msg = message.toLowerCase();
