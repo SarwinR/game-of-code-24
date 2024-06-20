@@ -1,15 +1,23 @@
-
 var form = document.getElementById('myForm');
 
-form.addEventListener('submit', function(event) {
-
+// Check if the 'name' cookie exists
+if (document.cookie.split(';').some((item) => item.trim().startsWith('name='))) {
+ 
+  form.style.display = 'none';
+} else {
+ 
+  form.addEventListener('submit', function(event) {
     event.preventDefault();
-  
-   
+
     var nameInput = document.getElementById('name');
+
   
-    localStorage.setItem('name', nameInput.value);
-  
-    
-    form.style.display = 'none';
+    if (nameInput.value !== '') {
+      
+      document.cookie = 'name=' + nameInput.value;
+
+      // Hide the form
+      form.style.display = 'none';
+    }
   });
+}
