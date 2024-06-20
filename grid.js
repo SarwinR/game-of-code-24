@@ -136,6 +136,7 @@ function movePlayer(direction) {
 
     if (x === endingPosition.x && y === endingPosition.y) {
       alert("You won!");
+
       return "win";
     }
   } else {

@@ -71,7 +71,12 @@ async function parseCode() {
       const direction = line.split('"')[1].trim();
       let result = movePlayer(direction);
     } else {
-      sendMessageToAI(code + "\n" + "Pinpoint the error in the code.");
+      sendMessageToAI(
+        code +
+          "\n" +
+          "Pinpoint the error in the code. At the end give the line number (consider empty lines as well) and the error in this format: [line 3]: [error]"
+      );
+      break;
     }
 
     // timeout 1 second

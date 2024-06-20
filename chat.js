@@ -1,6 +1,8 @@
 const apiKey = "sk-proj-zPocXeahxIqy5bnLjxzUT3BlbkFJkrSbemyu8OVz4TJeBbo6";
 const endpoint = "https://api.openai.com/v1/chat/completions";
 
+ai_memory = [];
+
 let expectingStoryMessage = false;
 let storyCallback = null;
 
@@ -24,7 +26,25 @@ function displayMessage(role, text) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 function sendMessageToAI(message) {
+  console.log("message", message);
   if (!message) return;
+
+  messages = [
+    {
+      role: "system",
+      content:
+        'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down), memory open, memory close, run].',
+    },
+  ];
+  // add messages from memory
+  for (const memory of ai_memory) {
+    messages.push(memory);
+  }
+
+  messages.push({
+    role: "user",
+    content: message,
+  });
 
   fetch(endpoint, {
     method: "POST",
@@ -34,22 +54,17 @@ function sendMessageToAI(message) {
     },
     body: JSON.stringify({
       model: "gpt-4-turbo",
-      messages: [
-        {
-          role: "system",
-          content:
-            'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down), memory open, memory close, run].',
-        },
-        {
-          role: "user",
-          content: message,
-        },
-      ],
+      messages: messages,
     }),
   })
     .then((response) => response.json())
     .then((data) => {
       const reply = data.choices[0].message.content;
+
+      ai_memory.push({
+        role: "assistant",
+        content: reply,
+      });
       displayMessage("system", reply);
     })
     .catch((error) => {
