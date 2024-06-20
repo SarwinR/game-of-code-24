@@ -105,8 +105,10 @@ function movePlayer(direction) {
     current_player_position = { x, y };
     player.style.left = `${x * TILE_SIZE + 4}px`;
     player.style.top = `${y * TILE_SIZE + 4}px`;
+    return true;
   } else {
-    console.log("You can't move there!");
+    gameOver();
+    return "gameover";
   }
 }
 

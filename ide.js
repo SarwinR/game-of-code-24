@@ -57,7 +57,10 @@ function parseCode() {
     // if move("direction")
     else if (line.startsWith("move")) {
       const direction = line.split('"')[1].trim();
-      movePlayer(direction);
+      let result = movePlayer(direction);
+      if (result == "gameover") {
+        break;
+      }
     }
   }
 }
