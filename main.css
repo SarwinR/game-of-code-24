@@ -79,13 +79,16 @@ img {
   left: 0;
 }
 
+/* Main container for right panel */
 #right-panel {
   display: flex;
   flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
+  width: 400px;
 }
 
+/* IDE panel styling */
 #ide-panel {
   flex: 1;
   background-color: #2e2e2e;
@@ -94,65 +97,17 @@ img {
   padding: 10px;
   border-bottom: 1px solid #333;
   overflow-y: auto;
-}
-
-#ide {
-  height: 100%;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-#right-panel {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-#ide-panel {
-  flex: 1;
-  background-color: #2e2e2e;
-  padding: 10px;
-  border-bottom: 1px solid #333;
-}
-
-#ide {
-  width: 100%;
-  height: 100%;
-  background-color: #1e1e1e;
-  color: #00ff00;
-  font-family: "Courier New", Courier, monospace;
-  border: none;
-  outline: none;
-  resize: none;
-  box-sizing: border-box;
-}
-
-/* ide and chat panel */
-
-#right-panel {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-#ide-panel {
-  flex: 1;
-  background-color: #2e2e2e;
-  padding: 10px;
-  border-bottom: 1px solid #333;
   display: flex;
 }
 
+/* IDE container styling */
 #ide-container {
-  
   display: flex;
   width: 100%;
   height: 100%;
 }
 
+/* Line numbers styling */
 #line-numbers {
   padding-left: 10px;
   background-color: #1e1e1e;
@@ -163,6 +118,7 @@ img {
   user-select: none;
 }
 
+/* IDE area styling */
 #ide {
   flex: 1;
   width: 100%;
@@ -176,7 +132,10 @@ img {
   box-sizing: border-box;
   padding-left: 10px;
   line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
+
 
 #chat-panel {
   height: 50vh; /* Adjust the height as needed */
