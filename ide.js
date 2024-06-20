@@ -50,8 +50,21 @@ async function parseCode() {
 
     // assignment
     if (line.includes("=")) {
+      // check if there is computation
+      // if (
+      //   line.includes("+") ||
+      //   line.includes("-") ||
+      //   line.includes("*") ||
+      //   line.includes("/")
+      // ) {
+      //   const [variable, expression] = line.split("=");
+      //   eval(line);
+      //   assign(variable.trim(), value);
+      // } else {
       const [variable, value] = line.split("=");
+      eval(line);
       assign(variable.trim(), value.trim());
+      // }
     }
     // if move("direction")
     else if (line.startsWith("move")) {
