@@ -58,6 +58,10 @@ function parseCode() {
     else if (line.startsWith("move")) {
       const direction = line.split('"')[1].trim();
       let result = movePlayer(direction);
+      if (result == "win") {
+        break;
+      }
+
       if (result == "gameover") {
         break;
       }

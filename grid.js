@@ -111,7 +111,11 @@ function movePlayer(direction) {
     current_player_position = { x, y };
     player.style.left = `${x * TILE_SIZE + 4}px`;
     player.style.top = `${y * TILE_SIZE + 4}px`;
-    return true;
+
+    if (x === endingPosition.x && y === endingPosition.y) {
+      alert("You won!");
+      return "win";
+    }
   } else {
     gameOver();
     return "gameover";
