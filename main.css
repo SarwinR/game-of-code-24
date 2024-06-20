@@ -3,9 +3,21 @@ body {
   margin: 0;
 }
 
+#myForm {
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 #character {
   z-index: 1;
-  background: red;
+  background: url('./assets/images/player_character.jpeg') no-repeat center center;
+  background-size: cover;
   width: 50px;
   height: 50px;
   position: absolute;
@@ -43,17 +55,6 @@ body {
   white-space: nowrap;
 }
 
-#memory-modal {
-  z-index: 2;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-}
-
 .body-main {
   margin: 0;
   display: flex;
@@ -66,6 +67,7 @@ body {
   flex: 1;
   position: relative; /* Allows positioning of image */
   background-size: cover;
+  overflow: hidden;
 }
 
 img {
@@ -238,29 +240,7 @@ img {
   right: 0;
 }
 
-#error-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ff0000;
-  color: #ffffff;
-  font-family: "Courier New", Courier, monospace;
-  width: 300px;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
-#buttons {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-
-.hidden {
-  display: none;
-}
 .message {
   margin: 5px 0;
   padding: 5px;
@@ -296,6 +276,7 @@ img {
   caret-color: #00ff00;
 }
 
+
 button {
   margin: 5px;
   padding: 10px;
@@ -307,6 +288,7 @@ button {
   display: none;
 }
 
+
 /* Grid Overlay */
 #grid-overlay {
   position: absolute;
@@ -315,12 +297,15 @@ button {
   width: 100%;
   height: 100%;
   display: grid;
+  gap: 2px; /* Space between grid tiles */
   pointer-events: none; /* Allow clicks to pass through */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .grid-tile {
   border: 1px solid rgba(255, 255, 255, 0.1); /* Light grid lines */
-  box-sizing: border-box;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  background-color: transparent;
 }
 
 .grid-tile.blocked {

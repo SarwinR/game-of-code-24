@@ -1,17 +1,17 @@
 // grid.js
-const TILE_SIZE = 50; // Size of each grid tile
+let TILE_SIZE; // Size of each grid tile will be dynamically calculated
 
 const grid = [
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-  [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-  [1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
-  [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
-  [1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1],
+  [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1],
+  [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1],
+  [1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+  [1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 function canMove(x, y) {
@@ -27,13 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function createGrid() {
     const leftPanelWidth = leftPanel.clientWidth;
     const leftPanelHeight = leftPanel.clientHeight;
-    const numCols = Math.ceil(leftPanelWidth / TILE_SIZE);
-    const numRows = Math.ceil(leftPanelHeight / TILE_SIZE);
+
+    const numCols = grid[0].length; // Number of columns based on grid data
+    const numRows = grid.length; // Number of rows based on grid data
+
+    TILE_SIZE = Math.min(leftPanelWidth / numCols, leftPanelHeight / numRows);
 
     gridOverlay.style.width = `${leftPanelWidth}px`;
     gridOverlay.style.height = `${leftPanelHeight}px`;
-    gridOverlay.style.gridTemplateColumns = `repeat(${numCols}, ${TILE_SIZE}px)`;
-    gridOverlay.style.gridTemplateRows = `repeat(${numRows}, ${TILE_SIZE}px)`;
+    gridOverlay.style.gridTemplateColumns = `repeat(${numCols}, 1fr)`;
+    gridOverlay.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
 
     // Clear any existing grid tiles
     while (gridOverlay.firstChild) {
@@ -44,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let x = 0; x < numCols; x++) {
         const tile = document.createElement("div");
         tile.classList.add("grid-tile");
-        if (grid[y] && grid[y][x] === 0) {
+        if (grid[y][x] === 0) {
           tile.classList.add("blocked");
         }
         gridOverlay.appendChild(tile);
@@ -57,3 +60,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Recreate the grid when the window is resized
   window.addEventListener("resize", createGrid);
 });
+
+window.canMove = canMove; // Make canMove function accessible globally
