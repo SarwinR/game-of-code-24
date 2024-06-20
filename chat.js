@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   expectingStoryMessage = true;
   storyCallback = (message) => {
     displayMessage("system", `Hello ${message}!`);
-    //levyn save name !!!
+    document.cookie = 'name=' + message;
   };
 
   function displayMessage(role, text) {
