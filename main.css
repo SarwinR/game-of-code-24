@@ -17,6 +17,7 @@ body {
 #character {
   z-index: 1;
   background-size: 50%;
+
   width: 50px;
   height: 50px;
   position: absolute;
@@ -56,11 +57,8 @@ body {
   border-radius: 10px;
   font-size: 2rem;
   white-space: normal;
-  max-width: 300px;
-  overflow-wrap: break-word;
-
-  max-width: 300px;
-  overflow-wrap: break-word;
+  max-width: 300px; 
+  overflow-wrap: break-word; 
   font-size: medium;
 }
 
@@ -226,13 +224,10 @@ body {
 }
 
 @keyframes blink-animation {
-  0%,
-  50%,
-  100% {
+  0%, 50%, 100% {
     opacity: 1;
   }
-  25%,
-  75% {
+  25%, 75% {
     opacity: 0.3;
   }
 }
@@ -337,15 +332,12 @@ body {
 
 }
 
-.grid-tile.end {
-  background-color: rgb(28, 207, 43); /* Indicate blocked tiles */
-}
 /* Memory Modal */
 #memory-modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  width:300px;
+  width: 300px;
   transform: translate(-50%, -50%);
   background-color: #1e1e1e;
   color: white;
@@ -363,7 +355,21 @@ body {
   overflow-y: auto; /* Add a scrollbar when the content overflows */
 }
 
+#memory-modal-content h2 {
+  position: sticky;
+  top: 0;
+  background-color: #1e1e1e;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  z-index: 1;
+}
+
 #memory-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Create two columns */
+  gap: 10px;
   list-style: none;
   padding: 0;
   width: 100%;

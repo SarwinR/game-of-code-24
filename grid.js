@@ -24,7 +24,7 @@ const playerImages = {
   front: "levels\\javascript_lesson\\assets\\images\\human_robot\\front.png",
   left: "levels\\javascript_lesson\\assets\\images\\human_robot\\left.png",
   right: "levels\\javascript_lesson\\assets\\images\\human_robot\\right.png",
-  back: "levels\\javascript_lesson\\assets\\images\\human_robot\\back.png"
+  back: "levels\\javascript_lesson\\assets\\images\\human_robot\\back.png",
 };
 
 function canMove(x, y) {
@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftPanelWidth = leftPanel.clientWidth;
     const leftPanelHeight = leftPanel.clientHeight;
 
-    const numCols = grid[0].length; 
-    const numRows = grid.length; 
+    const numCols = grid[0].length;
+    const numRows = grid.length;
 
     TILE_SIZE = Math.min(leftPanelWidth / numCols, leftPanelHeight / numRows);
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setupPlayer() {
   const player = document.getElementById("character");
-  const playerSize = TILE_SIZE * 0.6; 
+  const playerSize = TILE_SIZE * 0.6;
 
   // set player size
   player.style.width = `${playerSize}px`;
@@ -132,7 +132,6 @@ function movePlayer(direction) {
       alert("You won!");
       return "win";
     }
-
   } else {
     gameOver();
     return "gameover";
