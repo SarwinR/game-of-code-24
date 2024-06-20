@@ -1,5 +1,6 @@
 let TILE_SIZE; // Size of each grid tile will be dynamically calculated
 
+let startingPosition = { x: 1, y: 1 };
 const grid = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 1, 1, 1, 1, 1, 0],
@@ -9,7 +10,12 @@ const grid = [
   [0, 0, 0, 0, 0, 0, 0],
 ];
 
-let player_position = { x: 1, y: 1 };
+let current_player_position = { x: 1, y: 1 };
+
+function gameOver() {
+  alert("Haha you fell down");
+  setupPlayer();
+}
 
 function canMove(x, y) {
   return grid[y][x] === 1;
@@ -66,17 +72,19 @@ function setupPlayer() {
   player.style.width = `${TILE_SIZE}px`;
   player.style.height = `${TILE_SIZE}px`;
 
+  current_player_position = startingPosition;
+
   // set player position
-  player.style.left = `${player_position.x * TILE_SIZE}px`;
-  player.style.top = `${player_position.y * TILE_SIZE}px`;
+  player.style.left = `${current_player_position.x * TILE_SIZE}px`;
+  player.style.top = `${current_player_position.y * TILE_SIZE}px`;
 }
 
 function movePlayer(direction) {
   const player = document.getElementById("character");
 
   // get future position
-  let x = player_position.x;
-  let y = player_position.y;
+  let x = current_player_position.x;
+  let y = current_player_position.y;
 
   switch (direction) {
     case "left":
@@ -94,7 +102,7 @@ function movePlayer(direction) {
   }
 
   if (canMove(x, y)) {
-    player_position = { x, y };
+    current_player_position = { x, y };
     player.style.left = `${x * TILE_SIZE + 4}px`;
     player.style.top = `${y * TILE_SIZE + 4}px`;
   } else {

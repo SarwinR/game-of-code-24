@@ -1,6 +1,6 @@
 {
   "base_path": "./levels/javascript_lesson/",
-  "background": "assets/images/background2.jpg",
+  "background": "assets/images/lava.gif",
   "player_character": "assets/images/player_character.jpeg",
   "helper_character": "assets/images/helper.gif"
 }
