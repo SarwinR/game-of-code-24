@@ -19,19 +19,6 @@ function moveCharacter() {
   setTimeout(moveCharacter, randomTimeout);
 }
 
-document.addEventListener("keypress", (event) => {
-  if (event.key === "m") {
-    isMoving = !isMoving;
-    if (!isMoving) {
-      console.log("Character stopped moving.");
-      speechBubble.textContent = "Character stopped moving.";
-    } else {
-      speechBubble.textContent = "I am the evil character!";
-      moveCharacter();
-    }
-  }
-});
-
 function showFloatingMessage(message) {
   speechBubble.textContent = message;
 }
