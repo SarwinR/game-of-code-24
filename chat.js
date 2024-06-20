@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentInput = document.getElementById("current-input");
 
   function displayMessage(role, text) {
+    currentInput.textContent = "";
+
     const messageElem = document.createElement("div");
     messageElem.classList.add("message", role);
     messageElem.textContent = text;
@@ -14,10 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function sendMessage(message) {
+  function sendMessageToAI(message) {
     if (!message) return;
-
-    displayMessage("user", `> ${message}`);
 
     fetch(endpoint, {
       method: "POST",
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           {
             role: "system",
             content:
-              "You are an evil AI model in a game. Keep your answers short and evil. Do not use harsh language.",
+              'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down)].',
           },
           {
             role: "user",
@@ -49,8 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error:", error);
         displayMessage("system", "Error: Failed to fetch response");
       });
-
-    currentInput.textContent = "";
   }
 
   chatPanel.addEventListener("keypress", function (e) {
@@ -60,12 +58,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = currentInput.textContent.trim();
 
       if (message) {
-        // move("left")
-        if (message.startsWith("move")) {
-          const direction = message.split('"')[1];
-          move_character(direction);
+        safe_msg = message.toLowerCase();
+        if (safe_msg.startsWith("move")) {
+          const direction = safe_msg.split('"')[1];
+          console.log(direction);
+          if (
+            direction === "left" ||
+            direction === "right" ||
+            direction === "up" ||
+            direction === "down"
+          ) {
+            displayMessage("user", `> ${message}`);
+            move_character(direction);
+          } else {
+            displayMessage("user", `> ${message}`);
+            sendMessageToAI(message);
+          }
         } else {
-          sendMessage(message);
+          displayMessage("user", `> ${message}`);
+          sendMessageToAI(message);
         }
       }
     }
