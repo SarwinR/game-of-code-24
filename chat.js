@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (message) {
         safe_msg = message.toLowerCase();
+
         if (safe_msg == "memory open") {
           displayMessage("user", `> ${message}`);
           memoryModal.style.display = "block";
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
           memoryModal.style.display = "none";
         } else if (safe_msg.startsWith("move")) {
           const direction = safe_msg.split('"')[1];
+
           if (
             direction === "left" ||
             direction === "right" ||
