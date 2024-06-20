@@ -41,12 +41,19 @@ updateLineNumbers();
 async function parseCode() {
   code = ide.value;
 
-  await __sendMessageToAI(
-    'given the code, parse it and give it to me in this form: ["command1", "command2", ...]. The valid commands are: [move("left"),move("right"),move("up"),move("down")]',
-    ""
-  );
+  // console.log("code: " + code);
+
+  // let ai_line = await __sendMessageToAI(
+  //   "code: " + code,
+  //   'given the code, parse it and give it to me in this form: ["command1", "command2", ...]. The loop format is: loop <number> { code } .keep the syntax lenient and accept any loop types as it is for beginner  The valid commands that you should return are: [move("left"),move("right"),move("up"),move("down")] if there are any errors - just return "error"'
+  // );
+
+  // console.log(ai_line);
 
   lines = code.split("\n");
+  // remove [] and split by comma
+  //ai_line = ai_line ? ai_line.slice(1, -1).split(",") : [];
+  // lines = ai_line;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (line.startsWith("//") || line === "") {
