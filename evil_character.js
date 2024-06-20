@@ -32,11 +32,8 @@ document.addEventListener("keypress", (event) => {
   }
 });
 
-function showFloatingMessage() {
-  speechBubble.classList.remove("hidden");
-  setTimeout(() => {
-    speechBubble.classList.add("hidden");
-  }, 10000);
+function showFloatingMessage(message) {
+  speechBubble.textContent = message;
 }
 
 moveCharacter();

@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayMessage(role, text) {
     currentInput.textContent = "";
 
+    if (role === "system") showFloatingMessage(text);
+
     const messageElem = document.createElement("div");
     messageElem.classList.add("message", role);
     messageElem.textContent = text;

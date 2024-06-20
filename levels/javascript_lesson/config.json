@@ -2,5 +2,5 @@
   "base_path": "./levels/javascript_lesson/",
   "background": "assets/images/background.jpeg",
   "player_character": "assets/images/player_character.jpeg",
-  "helper_character": "assets/images/helper.png"
+  "helper_character": "assets/images/helper.gif"
 }
