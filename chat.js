@@ -1,6 +1,7 @@
 const apiKey = "sk-proj-zPocXeahxIqy5bnLjxzUT3BlbkFJkrSbemyu8OVz4TJeBbo6";
 const endpoint = "https://api.openai.com/v1/chat/completions";
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const chatPanel = document.getElementById("chat-panel");
   const chatMessages = document.getElementById("chat-messages");
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMessages.appendChild(messageElem);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
-
+  displayMessage("system","What is your name")
   function sendMessageToAI(message) {
     if (!message) return;
 
