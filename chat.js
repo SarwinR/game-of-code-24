@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMessages.appendChild(messageElem);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
-
+  displayMessage("system", "What is your name");
   function sendMessageToAI(message) {
     if (!message) return;
 
@@ -80,6 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.key === "Enter") {
       e.preventDefault();
+
+      if (expectingStoryMessage) {
+        storyCallback(message);
+        expectingStoryMessage = false;
+        storyCallback = null;
+        return;
+      }
 
       const message = currentInput.textContent.trim();
 
