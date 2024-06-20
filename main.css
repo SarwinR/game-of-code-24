@@ -52,7 +52,10 @@ body {
   padding: 10px;
   border-radius: 10px;
   font-size: 2rem;
-  white-space: nowrap;
+  white-space: normal;
+  width: 300px; 
+  overflow-wrap: break-word; 
+  font-size: medium;
 }
 
 .body-main {
