@@ -91,7 +91,7 @@ img {
 /* IDE panel styling */
 #ide-panel {
   flex: 1;
-  background-color: #2e2e2e;
+  background-color: #1e1e1e;
   color: #00ff00;
   font-family: "Courier New", Courier, monospace;
   padding: 10px;
@@ -134,6 +134,8 @@ img {
   line-height: 1.5;
   white-space: pre-wrap;
   word-wrap: break-word;
+  overflow-y: hidden;
+  tab-size: 2;
 }
 
 
