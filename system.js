@@ -24,4 +24,3 @@ function loadLevel(jsonPath, levelIndex) {
 }
 
 loadLevel("./levels/javascript_lesson/config.json", 0);
-// loadLevel("./levels/javascript_lesson/config.json", 1);

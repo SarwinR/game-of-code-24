@@ -1,5 +1,7 @@
 let TILE_SIZE;
 
+let currentLevel = 0;
+
 let startingPosition = { x: 1, y: 1 };
 let endingPosition = { x: 5, y: 4 };
 const grid = [
@@ -16,8 +18,16 @@ grid[endingPosition.y][endingPosition.x] = 2;
 let current_player_position = { x: 1, y: 1 };
 
 function gameOver() {
-  alert("Haha you fell down");
+  displayMessage("system", "Game Over!");
   setupPlayer();
+}
+
+function gameWin() {
+  displayMessage("system", "Congratulations! You have completed the level!");
+  if (currentLevel <= 1) {
+    loadLevel("./levels/javascript_lesson/config.json", currentLevel);
+    setupPlayer();
+  }
 }
 
 const playerImages = {
@@ -137,7 +147,8 @@ function movePlayer(direction) {
     }
 
     if (x === endingPosition.x && y === endingPosition.y) {
-      alert("You won!");
+      currentLevel++;
+      gameWin();
       return "win";
     }
   } else {
