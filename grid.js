@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function setupPlayer() {
-  // const player = document.getElementById("character");
   const playerSize = TILE_SIZE * 0.6;
 
   // set player size
@@ -102,7 +101,7 @@ function movePlayer(direction) {
   // get future position
   let x = current_player_position.x;
   let y = current_player_position.y;
-  let playerImage = ''
+  let playerImage = '';
 
   switch (direction) {
     case "left":
@@ -126,8 +125,12 @@ function movePlayer(direction) {
   if (canMove(x, y)) {
     current_player_position = { x, y };
 
-    player.style.left = `${x * TILE_SIZE + 4}px`;
-    player.style.top = `${y * TILE_SIZE + 4}px`;
+    const playerSize = TILE_SIZE * 0.6;
+    const offsetX = (TILE_SIZE - playerSize) / 2;
+    const offsetY = (TILE_SIZE - playerSize) / 2;
+
+    player.style.left = `${x * TILE_SIZE + offsetX}px`;
+    player.style.top = `${y * TILE_SIZE + offsetY}px`;
 
     // Update player's image
     if (player) {
@@ -136,7 +139,6 @@ function movePlayer(direction) {
 
     if (x === endingPosition.x && y === endingPosition.y) {
       alert("You won!");
-
       return "win";
     }
   } else {
