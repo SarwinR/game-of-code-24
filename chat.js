@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatMessages = document.getElementById("chat-messages");
   const currentInput = document.getElementById("current-input");
   const errorPanel = document.getElementById("error-panel");
-  const enableChatButton = document.getElementById("enable-chat");
-  const disableChatButton = document.getElementById("disable-chat");
+  // const enableChatButton = document.getElementById("enable-chat");
+  // const disableChatButton = document.getElementById("disable-chat");
   let chatEnabled = true;
 
   displayMessage("system", "What is your name");
