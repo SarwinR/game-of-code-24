@@ -115,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.cookie = "name=" + message;
   };
 
-
   function displayMessage(role, text) {
     currentInput.textContent = "";
 
