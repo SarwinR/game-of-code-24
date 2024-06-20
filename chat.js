@@ -1,6 +1,11 @@
 const apiKey = "sk-proj-zPocXeahxIqy5bnLjxzUT3BlbkFJkrSbemyu8OVz4TJeBbo6";
 const endpoint = "https://api.openai.com/v1/chat/completions";
 
+let ismMemoryModalActive = false;
+
+let expectingStoryMessage = false;
+let storyCallback = null;
+
 document.addEventListener("DOMContentLoaded", () => {
   const chatPanel = document.getElementById("chat-panel");
   const chatMessages = document.getElementById("chat-messages");

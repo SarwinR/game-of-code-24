@@ -11,6 +11,16 @@
   </div>
   <div class="body-main">
     <div id="left-panel">
+
+      <div id="memory-modal">
+        <div id="memory-modal-content">
+          <span id="memory-modal-close" class="close">&times;</span>
+          <h2>Memory</h2>
+          <p>Here is a list of things you have said:</p>
+          <ul id="memory-list"></ul>
+        </div>
+      </div>
+
       <form id="myForm">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br>
@@ -19,19 +29,12 @@
       <div id="character"></div>
     </div>
     <div id="right-panel">
-      <div id="chat-panel" tabindex="0">
-        <div id="chat-messages"></div>
-        <div class="prompt">
-          <div id="current-input" class="input" contenteditable="true"></div>
-        </div>
+    <div id="chat-panel" tabindex="0">
+      <div id="chat-messages"></div>
+      <div class="prompt">
+        <div id="current-input" class="input" contenteditable="true"></div>
       </div>
-      <div id="error-panel" class="hidden">
-        <div class="error-message">Error</div>
-      </div>
-      <div id="buttons">
-        <button id="enable-chat">Enable Chat</button>
-        <button id="disable-chat">Disable Chat</button>
-      </div>
+    </div>
     </div>
 
   </div>

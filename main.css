@@ -51,6 +51,17 @@ body {
   white-space: nowrap;
 }
 
+#memory-modal {
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 .body-main {
   margin: 0;
   display: flex;

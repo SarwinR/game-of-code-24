@@ -1,26 +1,6 @@
 var character = document.getElementById("character");
 var speed = 10; // Increase speed for noticeable movement
 
-// window.addEventListener('keydown', function(event) {
-//   var left = parseInt(character.style.left, 10);
-//   var top = parseInt(character.style.top, 10);
-
-//   switch (event.key) {
-//     case 'a': // Move left
-//       character.style.left = (left - speed) + 'px';
-//       break;
-//     case 'd': // Move right
-//       character.style.left = (left + speed) + 'px';
-//       break;
-//     case 'w': // Move up
-//       character.style.top = (top - speed) + 'px';
-//       break;
-//     case 's': // Move down
-//       character.style.top = (top + speed) + 'px';
-//       break;
-//   }
-// });
-
 function move_character(direction) {
   var left = parseInt(character.style.left, 10);
   var top = parseInt(character.style.top, 10);
