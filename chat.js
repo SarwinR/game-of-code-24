@@ -113,6 +113,24 @@ document.addEventListener("DOMContentLoaded", () => {
   storyCallback = (message) => {
     displayMessage("system", `Hello ${message}!`);
     document.cookie = "name=" + message;
+
+    let study_plan = getStudyPlan();
+    displayMessage(
+      "system",
+      "Hi, I am your programming tutor. I will help you learn programming. Let's start with the first task. - " +
+        study_plan[0]
+    );
+
+    __sendMessageToAI(
+      "Explain a bit about " + study_plan[0],
+      "you are a tutor, keep it short. it is for a beginner."
+    ).then((reply) => {
+      displayMessage("system", reply);
+      displayMessage(
+        "system",
+        "you can do x = 5 to assign 5 to x. and run open memory using memory open"
+      );
+    });
   };
 
   function displayMessage(role, text) {
