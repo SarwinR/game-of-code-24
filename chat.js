@@ -24,7 +24,7 @@ function ____chat(prompt) {
           content: prompt,
         },
       ],
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo",
     }),
   })
     .then((response) => response.json())
