@@ -1,10 +1,11 @@
 const apiKey = "sk-proj-zPocXeahxIqy5bnLjxzUT3BlbkFJkrSbemyu8OVz4TJeBbo6";
 const endpoint = "https://api.openai.com/v1/chat/completions";
 
-let ismMemoryModalActive = false;
-
 let expectingStoryMessage = false;
 let storyCallback = null;
+
+let memoryModal = document.getElementById("memory-modal");
+memoryModal.style.display = "none";
 
 document.addEventListener("DOMContentLoaded", () => {
   const chatPanel = document.getElementById("chat-panel");
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
           {
             role: "system",
             content:
-              'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down)].',
+              'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down), memory open, memory close]].',
           },
           {
             role: "user",
@@ -100,9 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (message) {
         safe_msg = message.toLowerCase();
-        if (safe_msg.startsWith("move")) {
+        if (safe_msg == "memory open") {
+          displayMessage("user", `> ${message}`);
+          memoryModal.style.display = "block";
+        } else if (safe_msg == "memory close") {
+          displayMessage("user", `> ${message}`);
+          memoryModal.style.display = "none";
+        } else if (safe_msg.startsWith("move")) {
           const direction = safe_msg.split('"')[1];
-          console.log(direction);
           if (
             direction === "left" ||
             direction === "right" ||

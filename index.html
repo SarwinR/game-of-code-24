@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Three.js Cube with Chat</title>
-  <link rel="stylesheet" href="main.css" />
-</head>
-<body>
-  <div id="evil_container">
-    <div id="evil_character">👿</div>
-    <div id="speech_bubble">I am the evil character!</div>
-  </div>
-  <div class="body-main">
-    <div id="left-panel">
-
-      <!-- <div id="memory-modal">
-        <div id="memory-modal-content">
-          <span id="memory-modal-close" class="close">&times;</span>
-          <h2>Memory</h2>
-          <p>Here is a list of things you have said:</p>
-          <ul id="memory-list"></ul>
-        </div>
-      </div> -->
-
-
-      <div id="character"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js Cube with Chat</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div id="evil_container">
+      <div id="evil_character">👿</div>
+      <div id="speech_bubble">I am the evil character!</div>
     </div>
-    <div id="right-panel">
+    <div class="body-main">
+      <div id="left-panel">
+        <div id="memory-modal">
+          <div id="memory-modal-content">
+            <h2>Memory</h2>
+            <p>x = 5</p>
+            <ul id="memory-list"></ul>
+          </div>
+        </div>
+
+        <div id="character"></div>
+      </div>
+      <div id="right-panel">
         <div id="chat-panel" tabindex="0">
           <div id="chat-messages"></div>
           <div class="prompt">
             <div id="current-input" class="input" contenteditable="true"></div>
           </div>
         </div>
-      <div id="error-panel" class="hidden">
-        <div class="error-message">Error</div>
-      </div>
-      <div id="buttons">
-        <button id="enable-chat">Enable Chat</button>
-        <button id="disable-chat">Disable Chat</button>
+        <div id="error-panel" class="hidden">
+          <div class="error-message">Error</div>
+        </div>
       </div>
     </div>
+    <div id="grid-overlay"></div>
 
-  </div>
-  <div id="grid-overlay"></div>
-  
-  <script src="grid.js" defer></script>
-  <script src="evil_character.js"></script>
-  <script src="system.js"></script>
-  <script src="chat.js" defer></script>
-  <script src="usermovement.js" defer></script>
-</body>
+    <script src="grid.js" defer></script>
+    <script src="evil_character.js"></script>
+    <script src="system.js"></script>
+    <script src="chat.js" defer></script>
+    <script src="usermovement.js" defer></script>
+  </body>
 </html>

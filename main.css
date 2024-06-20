@@ -85,6 +85,7 @@ img {
   font-family: "Courier New", Courier, monospace;
   padding: 10px;
   border-left: 1px solid #333;
+  overflow-y: hidden;
 }
 
 #chat-messages {
@@ -177,7 +178,6 @@ button {
 #error-panel.hidden {
   display: none;
 }
-
 
 /* Grid Overlay */
 #grid-overlay {
