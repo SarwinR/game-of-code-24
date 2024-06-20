@@ -2,16 +2,6 @@ body {
   overflow: hidden;
   margin: 0;
 }
-#myForm {
-  z-index: 2;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-}
 
 #character {
   z-index: 1;
@@ -20,7 +10,6 @@ body {
   height: 50px;
   position: absolute;
   left: 0;
-  background-size: 100% 100%;
   top: 0;
 }
 
@@ -51,6 +40,17 @@ body {
   white-space: nowrap;
 }
 
+#memory-modal {
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 .body-main {
   margin: 0;
   display: flex;
@@ -64,6 +64,8 @@ body {
   position: relative; /* Allows positioning of image */
   background-size: cover;
   overflow: hidden;
+
+
 }
 
 img {
@@ -178,6 +180,7 @@ button {
 #error-panel.hidden {
   display: none;
 }
+
 
 /* Grid Overlay */
 #grid-overlay {
