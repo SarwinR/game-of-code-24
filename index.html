@@ -1,61 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A Coding Adventure</title>
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <div id="evil_container">
-      <div id="evil_character"></div>
-      <div id="speech_bubble"></div>
-    </div>
-    <div class="body-main">
-      <div id="left-panel">
-        <div id="memory-modal">
-          <div id="memory-modal-content">
-            <h2>Memory</h2>
-            <ul id="memory-list"></ul>
-          </div>
-        </div>
-        <img
-          id="character"
-          src="levels\\javascript_lesson\\assets\\images\\human_robot\\front.png"
-        />
-      </div>
-      <div id="right-panel">
-        <div id="ide-panel">
-          <div id="ide-container">
-            <div id="line-numbers"></div>
-            <textarea id="ide" placeholder="Enter your code here..."></textarea>
-          </div>
-        </div>
-        <div id="chat-panel" tabindex="0">
-          <div id="chat-messages"></div>
-          <div class="prompt">
-            <div id="current-input" class="input" contenteditable="true"></div>
-          </div>
-        </div>
-        <div id="error-panel" class="hidden">
-          <img
-            src="Assets/warning_logo_2.svg"
-            class="blinking-image"
-            alt="Blinking"
-          />
-          <div class="glitch-text">
-            ##&$*%Error*%$##
-            <p>sdygvgsdyvfgsdvfgsdvf</p>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Coding Adventure</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <div id="evil_container">
+    <div id="evil_character"></div>
+    <div id="speech_bubble"></div>
+  </div>
+  <div class="body-main">
+    <div id="left-panel">
+      <div id="memory-modal">
+        <h2>Memory</h2>
+        <div id="memory-modal-content">
+          <ul id="memory-list"></ul>
         </div>
       </div>
+      <div id="help-modal">
+        <h2>Help</h2>
+        <div id="help-modal-content">
+          <p>Welcome to the Help section!</p>
+    <p>1. Use 'move("direction")' to move the player.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Direction can be 'left', 'right', 'up', or 'down'.</p>
+    <p>2. Use 'memory open' to view memory.</p>
+    <p>3. Use 'memory close' to close memory.</p>
+    <p>4. Use 'help open' to open this help.</p>
+    <p>5. Use 'help close' to close this help.</p>
+    <p>6. Use 'run' to execute your code.</p>
+        </div>
+      </div>
+      <div id="character"></div>
     </div>
-    <div id="grid-overlay"></div>
-    <script src="chat.js" defer></script>
-    <script src="grid.js" defer></script>
-    <script src="evil_character.js"></script>
-    <script src="system.js"></script>
-    <script src="ide.js" defer></script>
-    <script src="runner.js" defer></script>
-  </body>
+    <div id="right-panel">
+      <div id="ide-panel">
+        <div id="ide-container">
+          <div id="line-numbers"></div>
+          <textarea id="ide" placeholder="Enter your code here..."></textarea>
+        </div>
+      </div>
+      <div id="chat-panel" tabindex="0">
+        <div id="chat-messages"></div>
+        <div class="prompt">
+          <div id="current-input" class="input" contenteditable="true"></div>
+        </div>
+      </div>
+      <div id="error-panel" class="hidden">
+        <img src="Assets/warning_logo_2.svg" class="blinking-image" alt="Blinking" />
+        <div class="glitch-text">##&$*%Error*%$## <p> sdygvgsdyvfgsdvfgsdvf</div>
+      </div>
+    </div>
+  </div>
+  <div id="grid-overlay"></div>
+  <script src="chat.js" defer></script>
+  <script src="grid.js" defer></script>
+  <script src="evil_character.js"></script>
+  <script src="system.js"></script>
+  <script src="ide.js" defer></script>
+  <script src="runner.js" defer></script>
+</body>
+
 </html>
