@@ -24,7 +24,7 @@ function gameOver() {
 
 function gameWin() {
   displayMessage("system", "Congratulations! You have completed the level!");
-  if (currentLevel <= 1) {
+  if (currentLevel < 1) {
     loadLevel("./levels/javascript_lesson/config.json", currentLevel);
     disableChat();
     setupPlayer();
