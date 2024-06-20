@@ -12,7 +12,9 @@ const currentInput = document.getElementById("current-input");
 const errorPanel = document.getElementById("error-panel");
 
 let memoryModal = document.getElementById("memory-modal");
+let helpModal = document.getElementById("help-modal");
 memoryModal.style.display = "none";
+helpModal.style.display = "none";
 
 function displayMessage(role, text) {
   currentInput.textContent = "";
@@ -113,6 +115,54 @@ document.addEventListener("DOMContentLoaded", () => {
     document.cookie = "name=" + message;
   };
 
+
+  function displayMessage(role, text) {
+    currentInput.textContent = "";
+
+    if (role === "system") showFloatingMessage(text);
+
+    const messageElem = document.createElement("div");
+    messageElem.classList.add("message", role);
+    messageElem.textContent = text;
+    chatMessages.appendChild(messageElem);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function sendMessageToAI(message) {
+    if (!message) return;
+
+    fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-4-turbo",
+        messages: [
+          {
+            role: "system",
+            content:
+              'You are a programming tutor. You are also an evil AI model in a game. Keep your answers short and evil. Do not use harsh language. The user may sometimes send commands that are not correctly formatted, you just need to quickly explain why its not good and how suggest the correct command. Commands: [move("direction") -> direction: left, right, top, down), memory open, memory close, help open, help close, run].',
+          },
+          {
+            role: "user",
+            content: message,
+          },
+        ],
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const reply = data.choices[0].message.content;
+        displayMessage("system", reply);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        displayMessage("system", "Error: Failed to fetch response");
+      });
+  }
+
   function disableChat() {
     chatEnabled = false;
     chatPanel.classList.add("hidden");
@@ -162,6 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (safe_msg == "memory close") {
           displayMessage("user", `> ${message}`);
           memoryModal.style.display = "none";
+        } else if (safe_msg == "help open") {
+          displayMessage("user", `> ${message}`);
+          helpModal.style.display = "block";
+        } else if (safe_msg == "help close") {
+          displayMessage("user", `> ${message}`);
+          helpModal.style.display = "none";
         } else if (safe_msg.startsWith("move")) {
           const direction = safe_msg.split('"')[1];
 
@@ -199,5 +255,14 @@ function getMemory() {
     "Task 1": "Completed",
     "Task 2": "Pending",
     "Task 3": "In Progress",
+    "Task 4": "Completed",
+    "Task 5": "Pending",
+    "Task 6": "In Progress",
+    "Task 7": "Completed",
+    "Task 8": "Pending",
+    "Task 9": "In Progress",
+    "Task 10": "Completed",
+    "Task 11": "Pending",
+    "Task 12": "In Progress",
   };
 }

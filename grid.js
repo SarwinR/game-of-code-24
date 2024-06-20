@@ -132,7 +132,6 @@ function movePlayer(direction) {
     player.style.left = `${x * TILE_SIZE + offsetX}px`;
     player.style.top = `${y * TILE_SIZE + offsetY}px`;
 
-    // Update player's image
     if (player) {
       player.src = playerImage;
     }
