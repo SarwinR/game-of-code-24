@@ -202,7 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = currentInput.textContent.trim();
 
       if (expectingStoryMessage) {
-        console.log("story");
         displayMessage("user", `> ${message}`);
         storyCallback(message);
         expectingStoryMessage = false;
