@@ -39,7 +39,7 @@ function handleTabKey(e) {
 // Initialize line numbers
 updateLineNumbers();
 
-function parseCode() {
+async function parseCode() {
   code = ide.value;
   lines = code.split("\n");
   for (let i = 0; i < lines.length; i++) {
@@ -58,10 +58,10 @@ function parseCode() {
     else if (line.startsWith("move")) {
       const direction = line.split('"')[1].trim();
       let result = movePlayer(direction);
-      if (result == "gameover") {
-        break;
-      }
     }
+
+    // timeout 1 second
+    await new Promise((resolve) => setTimeout(resolve, 400));
   }
 }
 

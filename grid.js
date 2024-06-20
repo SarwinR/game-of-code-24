@@ -28,7 +28,7 @@ const playerImages = {
 };
 
 function canMove(x, y) {
-  return grid[y][x] === 1;
+  return grid[y][x] === 1 || grid[y][x] === 2 ? true : false;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -124,11 +124,15 @@ function movePlayer(direction) {
 
   if (canMove(x, y)) {
     current_player_position = { x, y };
-    const offsetX = (TILE_SIZE - player.clientWidth) / 2;
-    const offsetY = (TILE_SIZE - player.clientHeight) / 2;
-    player.style.left = `${x * TILE_SIZE + offsetX}px`;
-    player.style.top = `${y * TILE_SIZE + offsetY}px`;
-    return true;
+
+    player.style.left = `${x * TILE_SIZE + 4}px`;
+    player.style.top = `${y * TILE_SIZE + 4}px`;
+
+    if (x === endingPosition.x && y === endingPosition.y) {
+      alert("You won!");
+      return "win";
+    }
+
   } else {
     gameOver();
     return "gameover";
