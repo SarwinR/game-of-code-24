@@ -27,5 +27,6 @@ Our solution effectively combines education and entertainment, making coding fun
 ## Screenshots
 ![First Level](https://github.com/SarwinR/game-of-code-24/assets/96076166/91b235ed-5865-4488-a173-5804cb83d279)
 ![AI Assisting Player](https://github.com/SarwinR/game-of-code-24/assets/96076166/11e13be2-3aef-4e81-9c98-42a28d85c28e)
+![Evil AI](https://github.com/SarwinR/game-of-code-24/assets/96076166/01cf588b-ab34-49f0-8007-6a7e39ae3a2d)
 
 
