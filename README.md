@@ -2,7 +2,7 @@
 ## Team A4
 - [Levyn Kwong](https://github.com/levynKwong)
 - [Sarwin Rajiah](https://www.github.com/sarwinr)
-- Farhaan Nazirkhan
+- [Farhaan Nazirkhan](https://github.com/nfarhaan)
 - Feiz Roojee
 
 ## Challenge
