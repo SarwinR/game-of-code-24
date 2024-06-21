@@ -13,7 +13,7 @@ To create an immersive web application that simplifies coding concepts through p
 
 ### Website Development
 - HTML: Structured the webpage with a code editor, console, and game interface.
-- JavaScript: Implemented game logic, user interactions, and the AI assistant.
+- JavaScript: Implemented game logic, user interactions, and the AI assistant (GPT-4 Turbo).
 - CSS: Styled the interface for an engaging user experience.
 ### Key Features
 - Basic Code Editor: Allows players to write and test code with syntax highlighting.
