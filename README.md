@@ -1,6 +1,6 @@
 # Game of Code 2024
 ## Team A4
-- Levyn Kwong
+- [Levyn Kwong](https://github.com/levynKwong)
 - [Sarwin Rajiah](https://www.github.com/sarwinr)
 - Farhaan Nazirkhan
 - Feiz Roojee
