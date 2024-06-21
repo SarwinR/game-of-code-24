@@ -1,3 +1,4 @@
+// free open ai key :)
 const apiKey = "sk-proj-zPocXeahxIqy5bnLjxzUT3BlbkFJkrSbemyu8OVz4TJeBbo6";
 const endpoint = "https://api.openai.com/v1/chat/completions";
 
