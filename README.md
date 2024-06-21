@@ -3,7 +3,7 @@
 - [Levyn Kwong](https://github.com/levynKwong)
 - [Sarwin Rajiah](https://www.github.com/sarwinr)
 - [Farhaan Nazirkhan](https://github.com/nfarhaan)
-- Feiz Roojee
+- [Feiz Roojee](https://www.linkedin.com/in/feiz-roojee/)
 
 ## Challenge
 In the Game of Code challenge, participants had just 12 hours to create an immersive web or mobile application that encourages learning through coding-related puzzles. The goal was to simplify coding concepts into a gaming format, making it fun and engaging for users.
